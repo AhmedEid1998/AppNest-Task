@@ -1,0 +1,47 @@
+<div class="individual-choice">
+    <h3 *ngIf="title == 'اختيار فردي'"> {{ 'individual_choice' | translate }}</h3>
+    <h3 *ngIf="title == 'اختيار من متعدد'"> {{ 'multiple_choice' | translate }}</h3>
+    <h3 *ngIf="title == 'نص'"> {{ 'text' | translate }}</h3>
+    <input class="form-control qustion-text" type="text" [placeholder]="'question_text' | translate"/>
+    
+    <div class="choices-level" *ngIf="title == 'اختيار فردي' || title == 'اختيار من متعدد'">
+      <div class="new-choice" (click)="addChoice()">
+        <i class="icon fa-solid fa-plus"></i>
+        <span [style]="(dataService.currentLanguageSubject | async) == 'ar'?'margin-left: 10px;margin-right: 0;':'margin-right: 10px;margin-left: 0;'">
+          {{ 'new_option' | translate }}
+        </span>
+      </div>
+      <div class="radio-btns">
+        <label>
+          <input class="form-check-input" type="radio" [name]="index + title" [value]="'easy'"/>
+          <span>{{ 'easy' | translate }}</span>
+        </label>
+        <br />
+        <label>
+          <input class="form-check-input" type="radio" [name]="index + title" [value]="'middle'"/>
+          <span>{{ 'middle' | translate }}</span>
+        </label>
+        <br />
+        <label>
+          <input class="form-check-input" type="radio" [name]="index + title" [value]="'difficult'" />
+          <span>{{ 'difficult' | translate }}</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="choices" *ngIf="title == 'اختيار فردي' || title == 'اختيار من متعدد'">
+      <div class="item" *ngFor="let item of questions let i = index">
+        <input class="form-control choice-text" type="text" [placeholder]="'write_choice' | translate">
+        <label class="choice-btn">
+          <input *ngIf="title == 'اختيار فردي'" class="form-check-input" type="radio" [name]="index + title + ' space'" value="right"/>
+          <input *ngIf="title == 'اختيار من متعدد'" class="form-check-input" type="checkbox" [name]="index + title + ' space'" [value]="i + title"/>
+          <span>{{ 'mark_as_correct_answer' | translate }}</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="btns">
+      <button class="btn save">{{ 'save_as_draft' | translate }}</button>
+      <button class="btn exit" (click)="deleteQuetion(index, title)">{{ 'cancel' | translate }}</button>
+    </div>
+</div>

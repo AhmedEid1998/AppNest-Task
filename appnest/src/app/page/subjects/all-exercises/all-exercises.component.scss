@@ -1,0 +1,56 @@
+.all-exercises {
+  .list {
+    background-color: #ffe8f5;
+    border-radius: 12px;
+    ul {
+      margin: 0;
+      padding: 10px;
+      li {
+        list-style: none;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: grab;
+        transition: 0.1s ease-in-out;
+        span {
+          width: max-content;
+          font-size: 14px;
+          font-weight: 700;
+          color: #000;
+          transition: 0.1s ease-in-out;
+        }
+        .icon {
+          color: black;
+        }
+        &:hover {
+          background-color: #fff;
+          span {
+            color: var(--pink-dark-color);
+          }
+        }
+      }
+    }
+  }
+
+  .qustions {
+    width: 100%;
+    .drop-container {
+      background-color: #f8f8f8;
+      width: 100%;
+      border-radius: 8px;
+      border: dashed 1px var(--primary-color);
+      padding: 15px 10px 30px 10px;
+      margin-bottom: 20px;
+      p {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--black-color);
+      }
+    }
+  }
+}

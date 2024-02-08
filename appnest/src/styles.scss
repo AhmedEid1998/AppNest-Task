@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&family=Tajawal&display=swap");
+
+:root {
+  --black-color: #092434;
+  --primary-color: #ffd4ec;
+  --pink-dark-color: #ff3ba6;
+}
+* {
+  font-family: "Tajawal", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  background-color: #ffd4ec;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #ff3ca6;
+}

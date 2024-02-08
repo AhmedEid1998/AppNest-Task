@@ -1,0 +1,42 @@
+<div class="container-fluid all-exercises">
+  <div class="row">
+    <div class="col-lg-3 mb-3">
+      <div class="list">
+        <ul>
+          <li style="background-color: white">
+            <span style="color: #ff3ba6">{{ 'drag_the_question_type' | translate }}</span>
+            <i class="icon mx-3 fa-regular fa-hand-back-fist"></i>
+          </li>
+          <li id="draggable" draggable="true">
+            <span>{{ 'multiple_choice' | translate }}</span>
+          </li>
+          <li id="draggable" draggable="true">
+            <span>{{ 'individual_choice' | translate }}</span>
+          </li>
+          <li id="draggable" draggable="true">
+            <span>{{ 'text' | translate }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="qustions">
+        <div id="droppable" class="drop-container">
+          <p>{{ 'drag_and_drop_the_question_type_here' | translate }}</p>
+        </div>
+        
+        <div *ngFor="let item of individualChoice let i = index">
+            <app-question (sendData)="receiveData($event)" [index]="i" [title]="'اختيار فردي'"></app-question>
+        </div>
+        
+        <div *ngFor="let item of multiChoice let i = index">
+            <app-question (sendData)="receiveData($event)" [index]="i" [title]="'اختيار من متعدد'"></app-question>
+        </div>
+        
+        <div *ngFor="let item of textChoice let i = index">
+            <app-question (sendData)="receiveData($event)" [index]="i" [title]="'نص'"></app-question>
+        </div>      
+       
+    </div>
+  </div>
+</div>

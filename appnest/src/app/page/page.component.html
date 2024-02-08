@@ -1,0 +1,46 @@
+
+<app-top-bar (sidebarVisible)="showSidebar($event)" [pageTitle]="pageTitle"></app-top-bar>
+
+<app-right-bar (pageTitle)="receiveTitle($event)"></app-right-bar>
+
+
+<div [style]="(langService.currentLanguageSubject | async) == 'ar' ?'margin-right: 250px;margin-left: 0;':'margin-left: 250px;margin-right: 0;'"
+     class="page-content-routing">
+    <router-outlet></router-outlet>
+</div>
+
+<p-sidebar [position]="(langService.currentLanguageSubject | async) == 'ar' ? 'right':'left'"
+           [(visible)]="sidebarVisible">
+    <div class="right-sid-bar-conent">
+        <i (click)="sidebarVisible = false" class="pi pi-times"></i>
+        <div class="top">
+            <div class="book">
+                <div class="icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <h2>{{'your_book' | translate}}</h2>
+            </div>
+            <div class="links">
+                <ul>
+                    <li routerLink="main" routerLinkActive="active-link"
+                        (click)="pageTitle = 'الرئيسية'">
+                        <i class="icon fa-solid fa-chart-simple"></i>
+                        <span>{{'main' | translate}}</span>
+                    </li>
+                    <li routerLink="subjects" routerLinkActive="active-link"
+                        (click)="pageTitle = 'المواد الدراسية'">
+                        <i class="icon fa-solid fa-file-lines"></i>
+                        <span>{{'study_subjects' | translate}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="bottom-content">
+                <i class="pi pi-sign-out"
+                [style]="(langService.currentLanguageSubject | async) == 'ar' ? 'rotate: 180deg;':''"></i>
+                <span>{{'log_out' | translate}}</span>
+            </div>
+        </div>
+    </div>
+</p-sidebar>

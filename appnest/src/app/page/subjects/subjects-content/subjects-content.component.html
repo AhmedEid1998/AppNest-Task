@@ -1,0 +1,39 @@
+<p-toast position="top-center"></p-toast>
+<div class="container-fluid subject-component">
+  <h2>{{ 'subjects' | translate }}</h2>
+  <div class="row">
+    <div *ngIf="isLoading" class="w-100 text-center" >
+      <app-spinner></app-spinner>
+    </div>
+
+    <div class="col-lg-12 mt-4 error" *ngIf="isError">
+      <img src="../../../../assets/images/404.png" alt="">
+      <strong>{{'no_data' | translate}}</strong>
+    </div>
+    
+    <div class="col-lg-6 mt-4" *ngFor="let subject of subjects">
+      <div class="subject-card" *ngIf="!isLoading">
+        <div class="image">
+          <img [src]="subject.image" alt="" />
+        </div>
+        <h3>{{ subject.name }}</h3>
+        <p>{{ subject.description }}</p>
+        <div class="status">
+          <strong>{{ 'status' | translate }}</strong>
+          <span
+            [style]="
+              subject.status == 'active'
+                ? 'color: #00c614;background-color: rgba(0, 198, 20, 0.12)'
+                : 'color: #FFC11A;background-color: rgba(253, 212, 107, 0.28)'">
+            {{ subject.status }}
+          </span>
+        </div>
+        <div class="butn" routerLink="/page/subjects/all-exercises">
+          <span>{{ 'add_exercise' | translate }}</span>
+          <i class="pi pi-arrow-left"
+          [class]="(langService.currentLanguageSubject | async) == 'ar'? 'pi-arrow-left':'pi-arrow-right'"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

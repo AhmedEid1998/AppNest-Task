@@ -1,0 +1,39 @@
+<div class="top-bar">
+    <div class="top-bar-conent"
+         [style]="(langService.currentLanguageSubject | async) == 'ar' ? 'padding-right: 250px; padding-left: 0;' : 'padding-left: 250px; padding-right: 0;'">
+        <div class="right">
+            <i class="pi pi-bars my-auto" (click)="showSidebar()"></i>
+            <h2 *ngIf="pageTitle == 'المواد الدراسية'" class="my-auto">{{ 'study_subjects' | translate }}</h2>
+            <h2 *ngIf="pageTitle == 'الرئيسية'" class="my-auto">{{ 'main' | translate }}</h2>
+        </div>
+        <div class="left">
+            <div class="icons">
+                <div class="calendar">
+                    <i class="icon pi pi-calendar-minus"></i>
+                </div>
+                <div class="message">
+                    <i class="pi pi-question"></i>
+                    <i class="icon fa-regular fa-message"></i>
+                </div>
+                <div class="bell">
+                    <div class="red-dot"></div>
+                    <i class="icon fa-regular fa-bell"></i>
+                </div>
+            </div>
+            <div class="name-img">
+                <div class="image">
+                    <img src="../../assets/images/person.png" alt="">
+                </div>
+                <div class="name">
+                    <h3>{{ 'ahmed_soliman' | translate }}</h3>
+                    <h4>{{ 'teacher' | translate }}</h4>
+                </div>
+            </div>            
+            <div class="lang" (click)="menu.toggle($event)">
+                <i class="pi pi-angle-down"></i>
+                <span>{{ langService.currentLanguageSubject | async }}</span>
+            </div>
+            <p-menu #menu [model]="choiceLang" [popup]="true"></p-menu>
+        </div>
+    </div>    
+</div>
